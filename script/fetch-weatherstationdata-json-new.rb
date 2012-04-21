@@ -11,7 +11,6 @@ file = open(url)
 content = file.read()
 # Output the JSON file in its entirety.
 weatherdatafull = JSON.parse(content)
-# puts weatherdatafull['Locations']['Location']
 
 # Database connection + collection (tables).
 dbConnection = Mongo::Connection.new
