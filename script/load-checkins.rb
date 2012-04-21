@@ -1,6 +1,8 @@
 require 'twitter'
 require 'mongo'
 require 'open-uri'
+require 'json'
+
 
 conn     = Mongo::Connection.new
 db       = conn['weathertrumps']
@@ -13,13 +15,13 @@ end
 
 def get_stats(status, station)
   url = "http://partner.metoffice.gov.uk/public/val/wxobs/all/json/#{station['_id']}?res=hourly&key=56b621fb-4298-4631-88eb-2c380b914330"
-  raw_data = JSON.parse(open(url).read)
+  raw_data = ::JSON.parse(open(url).read)
   rep = raw_data['SiteRep']['DV']['Location']['Period'][1]['Rep']
   rep.last
 end
 
 
-Twitter.search("to:windytrumps", :rpp => 50, :result_type => "recent").map do |status|
+Twitter.search("to:windytrumps", :rpp => 100, :result_type => "recent").map do |status|
   unless status.geo.nil?
     puts status.from_user
     station = get_station(stations, status)
@@ -38,5 +40,7 @@ Twitter.search("to:windytrumps", :rpp => 50, :result_type => "recent").map do |s
       }
       )
     end
+  else
+    puts "no geo: #{status.from_user}"
   end
 end
