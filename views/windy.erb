@@ -1,10 +1,35 @@
-Results
-<ul>
-<% for @result in results %>
-  <li>
-    <%= @result['username'] %>
-    -
-    <%= @result['stats']['wind_speed'] %>mph
-  </li>
-<% end %>
-</ul>
+<html>
+	<head>
+		<title>Are you in the windiest place?</title>
+		<style>
+			body {
+				font-family:"Helvetica Neue";
+				font-weight:300;
+			}
+			h1 {
+				color:#8E2323
+			}
+			p#footer {
+				color:blue;
+				text-align:center;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Results</h1>
+		<ul>
+			<% for @result in results %>
+  			<li>
+    		@<%= @result['username'] %>
+			&ndash;
+			<%= @result['station'] %>
+			&ndash;
+    		<%= @result['stats']['wind_speed'] %>mph
+  			</li>
+		<% end %>
+		</ul>
+		
+		<hr />
+		<p class="footer">Made by <a href="http://twitter.com/roryoung">Rob Young</a> and <a href="http://twitter.com/issyl0">Isabell Long</a>.</p>
+	</body>
+</html>
