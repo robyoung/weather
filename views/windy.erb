@@ -1,1 +1,10 @@
-Brr! This is windy!
+Results
+<ul>
+<% for @result in results %>
+  <li>
+    <%= @result['username'] %>
+    -
+    <%= @result['stats']['wind_speed'] %>mph
+  </li>
+<% end %>
+</ul>
