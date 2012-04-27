@@ -1,3 +1,12 @@
+WindyTrumps
+===========
+
+Entry for National Hack The Government Day with @isyl0.
+
+Tweet @windytrumps, if your location is provided then it will find your nearest
+weather station and get the latest wind speed from there. Whoever has the highest
+each day is the winner.
+
 Example Data Point
 
 {
