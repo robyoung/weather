@@ -16,8 +16,8 @@ checkins = db['checkins']
 
 get '/' do
   query = {"created_at" => {"$gt" => Time.now - 86400}}
-  # opts  = {"sort" => ["stats.wind_speed", Mongo::DESCENDING]}
-  results = checkins.find(query) #, opts)
+  opts  = {:sort => ["stats.wind_speed", Mongo::DESCENDING]}
+  results = checkins.find(query, opts)
 
   erb :windy, :locals => {"results" => results}
 end
